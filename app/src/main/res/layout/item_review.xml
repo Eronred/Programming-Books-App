@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/view_comment"
+        app:layout_constraintBottom_toBottomOf="@+id/comment_review"
+        app:layout_constraintEnd_toEndOf="@+id/comment_review"
+        app:layout_constraintStart_toStartOf="@+id/comment_review"
+        app:layout_constraintTop_toTopOf="@+id/view32" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/userpic_review"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="33dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/download_back" />
+
+    <TextView
+        android:id="@+id/username__review"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Name"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/userpic_review"
+        app:layout_constraintTop_toTopOf="@+id/userpic_review" />
+
+    <RatingBar
+        android:id="@+id/rating_review"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="244dp"
+        android:progressTint="#FF9800"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/username__review"
+        app:layout_constraintTop_toBottomOf="@+id/username__review" />
+
+    <View
+        android:id="@+id/view32"
+        android:layout_width="282dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="42dp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/date_review"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="@+id/rating_review"
+        app:layout_constraintTop_toTopOf="@+id/comment_review" />
+
+    <TextView
+        android:id="@+id/comment_review"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat"
+        android:padding="10dp"
+        android:text="casascsacasöocoöasöcoasoöcasoöcoöasoöcsöoasoöcasoöcsöoas"
+        android:textColor="#000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/view32"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/username__review"
+        app:layout_constraintTop_toBottomOf="@+id/rating_review" />
+
+    <TextView
+        android:id="@+id/date_review"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/montserrat"
+        android:padding="5dp"
+        android:text="TextView"
+
+        android:textColor="#000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/comment_review"
+        app:layout_constraintTop_toBottomOf="@+id/comment_review" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
