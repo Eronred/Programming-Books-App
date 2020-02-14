@@ -185,7 +185,7 @@ public class GoogleUserProfile extends AppCompatActivity {
     }
 
     private void SendtoMainActivity(){
-        Intent mainIntent = new Intent(GoogleUserProfile.this, MainActivity.class);
+        Intent mainIntent = new Intent(GoogleUserProfile.this, bottomNavi.class);
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(mainIntent);
         finish();

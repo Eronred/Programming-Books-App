@@ -32,6 +32,9 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.reward.RewardItem;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -68,8 +71,8 @@ public class BookProfile extends AppCompatActivity {
 
 
     String pdflink;
-   // RewardedVideoAd adforbooks;
-    InterstitialAd adInter;
+    RewardedVideoAd adforbooks;
+    //InterstitialAd adInter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,13 +98,13 @@ public class BookProfile extends AppCompatActivity {
 
 
         MobileAds.initialize(BookProfile.this,"ca-app-pub-1884263917338927~9693953543");
-        adInter = new InterstitialAd(this);
+       /* adInter = new InterstitialAd(this);
         adInter.setAdUnitId("ca-app-pub-1884263917338927/4251932907");
-        adInter.loadAd(new AdRequest.Builder().build());
+        adInter.loadAd(new AdRequest.Builder().build());*/
        /* MobileAds.initialize(this,"ca-com.deveu.copus.app-pub-1884263917338927~9693953543");
-
+*/
         adforbooks=MobileAds.getRewardedVideoAdInstance(this);
-        adforbooks.loadAd("ca-com.deveu.copus.app-pub-1884263917338927/7576100244",new AdRequest.Builder().build());*/
+        adforbooks.loadAd("ca-app-pub-1884263917338927/7576100244",new AdRequest.Builder().build());
 
         findViewById(R.id.share_book).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -267,19 +270,21 @@ public class BookProfile extends AppCompatActivity {
              //  DownloadManager downloadManager = (DownloadManager)getApplicationContext(),getSys
 
 
+/*
 
                 if(adInter.isLoaded()){
                     adInter.show();
                 }
+*/
 
-/*
+
 
                 if(adforbooks.isLoaded()){
                     adforbooks.show();
                 }
-    */
 
-                adInter.setAdListener(new AdListener(){
+
+        /*        adInter.setAdListener(new AdListener(){
                     @Override
                     public void onAdLoaded() {
                         super.onAdLoaded();
@@ -380,12 +385,12 @@ public class BookProfile extends AppCompatActivity {
                         super.onAdImpression();
                     }
                 });
+*/
 
 
 
 
 
-/*
                 adforbooks.setRewardedVideoAdListener(new RewardedVideoAdListener() {
                     @Override
                     public void onRewardedVideoAdLoaded() {
@@ -421,7 +426,7 @@ public class BookProfile extends AppCompatActivity {
 
                     @Override
                     public void onRewardedVideoAdClosed() {
-                        adforbooks.loadAd("ca-com.deveu.copus.app-pub-1884263917338927/7576100244",new AdRequest.Builder().build());
+                        adforbooks.loadAd("ca-app-pub-1884263917338927/7576100244",new AdRequest.Builder().build());
                         Toast.makeText(BookProfile.this, "Respect for our labour :)) ", Toast.LENGTH_SHORT).show();
 
 
@@ -485,7 +490,7 @@ public class BookProfile extends AppCompatActivity {
                         fordown.updateChildren(hashMap3);
 
                     }
-                });*/
+                });
             }
         });
 

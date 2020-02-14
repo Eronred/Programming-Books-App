@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
+import java.util.Map;
 
 public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.viewHolder> {
 
@@ -40,7 +41,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.viewHolder
     public class viewHolder extends RecyclerView.ViewHolder{
         public ImageView profil_resmi;
         public TextView txt_kullanici_adi, txt_yorumlar,txt_date;
-        public RatingBar ratingBar2;
+        public RatingBar rating_review;
         public viewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -48,7 +49,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.viewHolder
             txt_kullanici_adi = itemView.findViewById(R.id.username__review);
             txt_yorumlar = itemView.findViewById(R.id.comment_review);
             txt_date = itemView.findViewById(R.id.date_review);
-            ratingBar2 = itemView.findViewById(R.id.ratingBarItem);
+            rating_review = itemView.findViewById(R.id.rating_review);
 
         }
     }
@@ -76,16 +77,42 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.viewHolder
 
 
 
+        DatabaseReference rtdb  = FirebaseDatabase.getInstance().getReference("BooksReviews")
+                .child(gonderi.getBookid());
 
+        rtdb.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    long datacount = dataSnapshot.getChildrenCount();
+                    float sum = 0;
+                    for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                        Map<String,String> map = (Map<String,String>) snapshot.getValue();
+                        String rating = map.get("rating");
+
+                        float pValue = Float.parseFloat(rating);
+                        sum+=pValue;
+
+                        float rtx = sum / (float) datacount;
+
+                        viewHolder.rating_review.setRating(rtx);
+                    }
+                }else{
+                    viewHolder.rating_review.setRating(0);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
 
     }
 
-    private void Ratings(String bookid) {
 
-
-    }
 
     @Override
     public int getItemCount() {

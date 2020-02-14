@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.deveu.copus.app.Adapter.ViewHolderMyBooks;
+import com.deveu.copus.app.Datas.Books;
 import com.deveu.copus.app.Datas.MyBooks;
 import com.deveu.copus.app.R;
 import com.deveu.copus.app.ReadingSection.PDFActivity;
@@ -27,7 +28,9 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -37,6 +40,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -60,7 +65,7 @@ public class profileuser extends Fragment {
     private TextView usernameText;
     private CircleImageView tutorpi_profile;
 
-    InterstitialAd adInter;
+   // InterstitialAd adInter;
     public profileuser() {
         // Required empty public constructor
     }
@@ -83,13 +88,13 @@ public class profileuser extends Fragment {
 
         MobileAds.initialize(getActivity(),"ca-app-pub-1884263917338927~9693953543");
 
-        adInter = new InterstitialAd(getActivity());
+      /*  adInter = new InterstitialAd(getActivity());
         adInter.setAdUnitId("ca-app-pub-1884263917338927/4251932907");
-        adInter.loadAd(new AdRequest.Builder().build());
+        adInter.loadAd(new AdRequest.Builder().build());*/
 
 
-     /*   adforbooks=MobileAds.getRewardedVideoAdInstance(getContext());
-        adforbooks.loadAd("ca-com.deveu.copus.app-pub-1884263917338927/7576100244",new AdRequest.Builder().build());*/
+        adforbooks=MobileAds.getRewardedVideoAdInstance(getContext());
+        adforbooks.loadAd("ca-app-pub-1884263917338927/7576100244",new AdRequest.Builder().build());
 
         currentuser= FirebaseAuth.getInstance().getCurrentUser();
         textView24=getView().findViewById(R.id.textView24);
@@ -168,7 +173,36 @@ public class profileuser extends Fragment {
                                 Books.getPdflink()
 
                         );
+                        DatabaseReference rtdb  = FirebaseDatabase.getInstance().getReference("BooksReviews")
+                                .child(Books.getBookid());
 
+                        rtdb.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                if(dataSnapshot.exists()){
+                                    long datacount = dataSnapshot.getChildrenCount();
+                                    float sum = 0;
+                                    for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                                        Map<String,String> map = (Map<String,String>) snapshot.getValue();
+                                        String rating = map.get("rating");
+
+                                        float pValue = Float.parseFloat(rating);
+                                        sum+=pValue;
+
+                                        float rtx = sum / (float) datacount;
+
+                                        viewHolder.rtw.setRating(rtx);
+                                    }
+                                }else{
+                                    viewHolder.rtw.setRating(0);
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
                     }
 
                     @Override
@@ -181,13 +215,13 @@ public class profileuser extends Fragment {
                             @Override
                             public void onItemClick(View view, int position) {
 
-                              /*  if(adforbooks.isLoaded()){
+                                if(adforbooks.isLoaded()){
                                     adforbooks.show();
-                                }*/
+                                }
 
 
 
-/*
+
                                 adforbooks.setRewardedVideoAdListener(new RewardedVideoAdListener() {
                                     @Override
                                     public void onRewardedVideoAdLoaded() {
@@ -207,7 +241,7 @@ public class profileuser extends Fragment {
 
                                     @Override
                                     public void onRewardedVideoAdClosed() {
-                                        adforbooks.loadAd("ca-com.deveu.copus.app-pub-1884263917338927/7576100244",new AdRequest.Builder().build());
+                                        adforbooks.loadAd("ca-app-pub-1884263917338927/7576100244",new AdRequest.Builder().build());
                                         Toast.makeText(getContext(), "Respect for our labour :)) ", Toast.LENGTH_SHORT).show();
                                     }
 
@@ -235,9 +269,9 @@ public class profileuser extends Fragment {
                                     public void onRewardedVideoCompleted() {
 
                                     }
-                                });*/
+                                });
 
-                                if(adInter.isLoaded()){
+                       /*         if(adInter.isLoaded()){
                                     adInter.show();
                                 }
 
@@ -282,8 +316,7 @@ public class profileuser extends Fragment {
                                     public void onAdImpression() {
                                         super.onAdImpression();
                                     }
-                                });
-
+                                });*/
 
 
 

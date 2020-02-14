@@ -54,7 +54,6 @@ public class Sign_In extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private List<slide> firstSlides,upsilider;
     private ViewPager v_sign;
-    private ProgressBar progressBarSign;
     private ConstraintLayout constraintLayoutSign;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,15 +62,15 @@ public class Sign_In extends AppCompatActivity {
 
         githubbutton = findViewById(R.id.githubsignbutton);
         googlebutton = findViewById(R.id.googlesignbutton);
-        progressBarSign = findViewById(R.id.progressBarSign);
+
         constraintLayoutSign = findViewById(R.id.constraintLayoutSign);
 
-        v_sign = findViewById(R.id.rv_sign);
+        //v_sign = findViewById(R.id.rv_sign);
 
 
-        Timer timer= new Timer();
+        /*Timer timer= new Timer();
         timer.scheduleAtFixedRate(new sliderTime2(),2000,3000);
-        sliderPaperAdapter();
+        sliderPaperAdapter();*/
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -211,7 +210,7 @@ public class Sign_In extends AppCompatActivity {
 
 
 
-    private void sliderPaperAdapter() {
+    /*private void sliderPaperAdapter() {
 
 
 
@@ -250,9 +249,9 @@ public class Sign_In extends AppCompatActivity {
         });
 
 
-    }
+    }*/
 
-    class sliderTime2 extends TimerTask { //to change pics!
+   /* class sliderTime2 extends TimerTask { //to change pics!
 
         @Override
         public void run() {
@@ -270,7 +269,7 @@ public class Sign_In extends AppCompatActivity {
                 }
             });
         }
-    }
+    }*/
 
 
     @Override

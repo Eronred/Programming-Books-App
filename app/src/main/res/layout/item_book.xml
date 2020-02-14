@@ -17,7 +17,8 @@
         app:layout_constraintEnd_toEndOf="@+id/name_book"
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="@+id/name_book"
-        app:layout_constraintTop_toBottomOf="@+id/name_book" />
+        app:layout_constraintTop_toBottomOf="@+id/name_book"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/name_book"
