@@ -3,9 +3,9 @@ android {
     signingConfigs {
         release {
             storePassword '19051905'
-            keyAlias = 'keyc45'
+            keyAlias = 'keycps45'
             keyPassword '19051905'
-            storeFile file('C:\\Users\\erenc\\copusdeveu.jks')
+            storeFile file('C:\\Users\\erenc\\OneDrive\\Masaüstü\\deveucopus.jks')
         }
     }
     compileSdkVersion 29
@@ -13,8 +13,8 @@ android {
         applicationId "com.deveu.copus.app"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.release
     }
@@ -26,7 +26,6 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            debuggable true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }

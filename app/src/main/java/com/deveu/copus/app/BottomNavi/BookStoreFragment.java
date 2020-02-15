@@ -375,9 +375,8 @@ public class BookStoreFragment extends Fragment {
         rvİosStore.setAdapter(firebaseRecyclerAdapter3);
         rvİosStore.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.HORIZONTAL) );
         //*********************************************web Books
+
         Query web = mRef.orderByChild("categoryid").equalTo("3");
-
-
         FirebaseRecyclerAdapter<Books, ViewHolderBooks> firebaseRecyclerAdapter4 =
                 new FirebaseRecyclerAdapter<Books, ViewHolderBooks>(
                         Books.class, R.layout.item_book, ViewHolderBooks.class, web
@@ -487,11 +486,9 @@ public class BookStoreFragment extends Fragment {
 
         //*********************************************newpublish Books
         Query newpublish = mRef.orderByChild("categoryid").equalTo("6");
-
-
         FirebaseRecyclerAdapter<Books, ViewHolderBooks> firebaseRecyclerAdapter5 =
                 new FirebaseRecyclerAdapter<Books, ViewHolderBooks>(
-                        Books.class, R.layout.item_book, ViewHolderBooks.class, web
+                        Books.class, R.layout.item_book, ViewHolderBooks.class, newpublish
                 ) {
                     @Override
                     protected void populateViewHolder(ViewHolderBooks viewHolder, Books Books, int position) {
@@ -595,10 +592,9 @@ public class BookStoreFragment extends Fragment {
                 };
         rv_store_language.setAdapter(firebaseRecyclerAdapter5);
         rv_store_language.setLayoutManager(new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL) );
+
         //*********************************************gamedev Books
         Query gameDev = mRef.orderByChild("categoryid").equalTo("4");
-
-
         FirebaseRecyclerAdapter<Books, ViewHolderBooks> firebaseRecyclerAdapter6 =
                 new FirebaseRecyclerAdapter<Books, ViewHolderBooks>(
                         Books.class, R.layout.item_book, ViewHolderBooks.class, gameDev
@@ -1030,7 +1026,7 @@ public class BookStoreFragment extends Fragment {
 
                 if (numbofBook==0){
 
-                    textView19.setText("You have not any book :/");
+                    textView19.setText("You don't have any book :/");
                 }else {
                     textView19.setVisibility(View.GONE);
 

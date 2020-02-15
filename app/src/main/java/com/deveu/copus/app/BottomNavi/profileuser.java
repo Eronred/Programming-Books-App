@@ -146,7 +146,7 @@ public class profileuser extends Fragment {
 
              if (numbofBook==0){
 
-              textView20.setText("You have not any book :/");
+              textView20.setText("You don't have any book :/");
                  textView24.setVisibility(View.GONE);
 
              }else {
