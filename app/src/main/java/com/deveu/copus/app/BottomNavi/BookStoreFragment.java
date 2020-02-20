@@ -127,7 +127,7 @@ public class BookStoreFragment extends Fragment {
        /* Timer timer1=new Timer();
         timer1.scheduleAtFixedRate(new BookStoreFragment(). sliderTime2(),2000,3000);*/
 
-        MobileAds.initialize(getContext(),"ca-app-pub-1884263917338927~9693953543");
+        MobileAds.initialize(getContext(),"ca-app-pub-3739839397874462~1984963841");
        /* adInter = new InterstitialAd(getContext());
         adInter.setAdUnitId("ca-app-pub-1884263917338927/4251932907");
         adInter.loadAd(new AdRequest.Builder().build());*/
@@ -135,7 +135,7 @@ public class BookStoreFragment extends Fragment {
 
 
         adforbooks=MobileAds.getRewardedVideoAdInstance(getContext());
-        adforbooks.loadAd("ca-app-pub-1884263917338927/7576100244",
+        adforbooks.loadAd("ca-app-pub-3739839397874462/3181467773",
         new AdRequest.Builder().build());
 
         currentuser= FirebaseAuth.getInstance().getCurrentUser();
@@ -262,7 +262,7 @@ public class BookStoreFragment extends Fragment {
                     }
                 };
         rvAndroid.setAdapter(firebaseRecyclerAdapter2);
-        rvAndroid.setLayoutManager(new StaggeredGridLayoutManager(6,StaggeredGridLayoutManager.HORIZONTAL) );
+        rvAndroid.setLayoutManager(new StaggeredGridLayoutManager(4,StaggeredGridLayoutManager.HORIZONTAL) );
 
         //*********************************************İos Books
         Query İosbooks = mRef.orderByChild("categoryid").equalTo("2");
@@ -482,7 +482,7 @@ public class BookStoreFragment extends Fragment {
                     }
                 };
         rvWeb.setAdapter(firebaseRecyclerAdapter4);
-        rvWeb.setLayoutManager(new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL) );
+        rvWeb.setLayoutManager(new StaggeredGridLayoutManager(4,StaggeredGridLayoutManager.HORIZONTAL) );
 
         //*********************************************newpublish Books
         Query newpublish = mRef.orderByChild("categoryid").equalTo("6");
@@ -700,10 +700,10 @@ public class BookStoreFragment extends Fragment {
                     }
                 };
         rvGameStore.setAdapter(firebaseRecyclerAdapter6);
-        rvGameStore.setLayoutManager(new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL) );
+        rvGameStore.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.HORIZONTAL) );
 
         //*********************************************webDev Books
-        Query Database = mRef.orderByChild("categoryid").equalTo("5");
+        Query Database = mRef.orderByChild("categoryid").equalTo("7");
         FirebaseRecyclerAdapter<Books, ViewHolderBooks> firebaseRecyclerAdapter7 =
                 new FirebaseRecyclerAdapter<Books, ViewHolderBooks>(
                         Books.class, R.layout.item_book, ViewHolderBooks.class, Database
@@ -810,7 +810,7 @@ public class BookStoreFragment extends Fragment {
                     }
                 };
         rvDesignData.setAdapter(firebaseRecyclerAdapter7);
-        rvDesignData.setLayoutManager(new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL) );
+        rvDesignData.setLayoutManager(new StaggeredGridLayoutManager(6,StaggeredGridLayoutManager.HORIZONTAL) );
 
 
         //*********************************************personal Books
@@ -921,7 +921,7 @@ public class BookStoreFragment extends Fragment {
                     }
                 };
         rvPerStore.setAdapter(firebaseRecyclerAdapter8);
-        rvPerStore.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.HORIZONTAL) );
+        rvPerStore.setLayoutManager(new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.HORIZONTAL) );
     }
 
 
@@ -1169,7 +1169,7 @@ public class BookStoreFragment extends Fragment {
 
                                     @Override
                                     public void onRewardedVideoAdClosed() {
-                                        adforbooks.loadAd("ca-app-pub-1884263917338927/7576100244",new AdRequest.Builder().build());
+                                        adforbooks.loadAd("ca-app-pub-3739839397874462/3181467773",new AdRequest.Builder().build());
                                         Toast.makeText(getContext(), "Respect for our labour :)) ", Toast.LENGTH_SHORT).show();
                                     }
 

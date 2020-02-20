@@ -4,14 +4,14 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:id="@+id/cons"
 android:layout_width="match_parent"
-android:background="#1a1a1a"
+
 android:layout_height="match_parent"
 tools:context=".ReadingSection.Comment_activity">
 
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:background="#1a1a1a"
+
     android:layout_height="match_parent">
 
 
@@ -20,7 +20,7 @@ tools:context=".ReadingSection.Comment_activity">
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="32dp"
         android:ems="10"
         android:hint="My review..."
@@ -43,8 +43,10 @@ tools:context=".ReadingSection.Comment_activity">
         android:background="@drawable/download_back"
         android:clickable="true"
         android:focusable="true"
+        android:textAllCaps="false"
         android:fontFamily="@font/gudea"
-        android:text="SEND YOUR REVIEW"
+        android:textSize="18sp"
+        android:text="Send your review"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -76,15 +78,15 @@ tools:context=".ReadingSection.Comment_activity">
 
     <ImageView
         android:id="@+id/imageView41"
-        android:layout_width="40dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="355dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_share_black_24dp" />
+        app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
 
     <TextView
         android:id="@+id/textView28"
@@ -93,8 +95,8 @@ tools:context=".ReadingSection.Comment_activity">
 
         android:layout_marginTop="21dp"
         android:fontFamily="@font/montserrat"
-        android:text="Your Review comment"
-        android:textColor="@color/white"
+        android:text="Your review "
+        android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/edittext_review"

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#1A1A1A"
+    android:background="@drawable/sign_back"
     android:layout_height="match_parent"
     tools:context=".Sign_in.Sign_In">
 
@@ -17,37 +17,25 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-        <ImageView
-            android:id="@+id/rv_sign"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginEnd="1dp"
-            android:src="@drawable/back_pp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+
 
         <ImageView
             android:id="@+id/githubsignbutton"
             android:layout_width="0dp"
-            android:layout_height="62dp"
-            android:layout_marginStart="32dp"
+            android:layout_height="51dp"
 
             android:layout_marginTop="38dp"
-            android:layout_marginEnd="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/googlesignbutton"
+            app:layout_constraintStart_toStartOf="@+id/googlesignbutton"
             app:layout_constraintTop_toBottomOf="@+id/googlesignbutton"
             app:srcCompat="@drawable/ic_github_forbook" />
 
         <ImageView
             android:id="@+id/googlesignbutton"
             android:layout_width="0dp"
-            android:layout_height="62dp"
+            android:layout_height="51dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="400dp"
+            android:layout_marginTop="468dp"
             android:layout_marginEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -57,12 +45,16 @@
 
         <ImageView
             android:id="@+id/imageView6"
-            android:layout_width="151dp"
-            android:layout_height="143dp"
+            android:layout_width="96dp"
+            android:layout_height="93dp"
+            android:layout_marginTop="181dp"
+            android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toTopOf="@+id/googlesignbutton"
             app:layout_constraintEnd_toEndOf="@+id/googlesignbutton"
+            app:layout_constraintHorizontal_bias="0.45"
             app:layout_constraintStart_toStartOf="@+id/googlesignbutton"
-            app:layout_constraintTop_toTopOf="@+id/rv_sign"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.505"
             app:srcCompat="@drawable/ic_app_logo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -97,14 +97,14 @@ public class BookProfile extends AppCompatActivity {
 
 
 
-        MobileAds.initialize(BookProfile.this,"ca-app-pub-1884263917338927~9693953543");
+        MobileAds.initialize(BookProfile.this,"ca-app-pub-3739839397874462~1984963841");
        /* adInter = new InterstitialAd(this);
         adInter.setAdUnitId("ca-app-pub-1884263917338927/4251932907");
         adInter.loadAd(new AdRequest.Builder().build());*/
        /* MobileAds.initialize(this,"ca-com.deveu.copus.app-pub-1884263917338927~9693953543");
 */
         adforbooks=MobileAds.getRewardedVideoAdInstance(this);
-        adforbooks.loadAd("ca-app-pub-1884263917338927/7576100244",new AdRequest.Builder().build());
+        adforbooks.loadAd("ca-app-pub-3739839397874462/3181467773",new AdRequest.Builder().build());
 
         findViewById(R.id.share_book).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -426,7 +426,7 @@ public class BookProfile extends AppCompatActivity {
 
                     @Override
                     public void onRewardedVideoAdClosed() {
-                        adforbooks.loadAd("ca-app-pub-1884263917338927/7576100244",new AdRequest.Builder().build());
+                        adforbooks.loadAd("ca-app-pub-3739839397874462/3181467773",new AdRequest.Builder().build());
                         Toast.makeText(BookProfile.this, "Respect for our labour :)) ", Toast.LENGTH_SHORT).show();
 
 

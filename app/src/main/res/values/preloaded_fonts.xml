@@ -3,5 +3,6 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/montserrat</item>
         <item>@font/montserrat_bold</item>
+        <item>@font/muli</item>
     </array>
 </resources>

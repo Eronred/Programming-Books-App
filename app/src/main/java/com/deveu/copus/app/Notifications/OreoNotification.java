@@ -16,8 +16,8 @@ public class OreoNotification extends ContextWrapper {
 
 
 
-    private static final String CHANNEL_ID = "com.bookapp";
-    private static final String CHANNEL_NAME = "Coder Books";
+    private static final String CHANNEL_ID = "com.deveu.copus.app";
+    private static final String CHANNEL_NAME = "Codeopus";
 
     private NotificationManager notificationManager;
 

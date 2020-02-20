@@ -51,6 +51,14 @@ public class Comment_activity extends AppCompatActivity {
 
 
 
+        findViewById(R.id.imageView41).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
 
 
         add_review.setOnClickListener(new View.OnClickListener() {

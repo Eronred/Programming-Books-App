@@ -86,7 +86,7 @@ public class profileuser extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        MobileAds.initialize(getActivity(),"ca-app-pub-1884263917338927~9693953543");
+        MobileAds.initialize(getActivity(),"ca-app-pub-3739839397874462~1984963841");
 
       /*  adInter = new InterstitialAd(getActivity());
         adInter.setAdUnitId("ca-app-pub-1884263917338927/4251932907");
@@ -94,7 +94,7 @@ public class profileuser extends Fragment {
 
 
         adforbooks=MobileAds.getRewardedVideoAdInstance(getContext());
-        adforbooks.loadAd("ca-app-pub-1884263917338927/7576100244",new AdRequest.Builder().build());
+        adforbooks.loadAd("ca-app-pub-3739839397874462/3181467773",new AdRequest.Builder().build());
 
         currentuser= FirebaseAuth.getInstance().getCurrentUser();
         textView24=getView().findViewById(R.id.textView24);
@@ -241,7 +241,7 @@ public class profileuser extends Fragment {
 
                                     @Override
                                     public void onRewardedVideoAdClosed() {
-                                        adforbooks.loadAd("ca-app-pub-1884263917338927/7576100244",new AdRequest.Builder().build());
+                                        adforbooks.loadAd("ca-app-pub-3739839397874462/3181467773",new AdRequest.Builder().build());
                                         Toast.makeText(getContext(), "Respect for our labour :)) ", Toast.LENGTH_SHORT).show();
                                     }
 

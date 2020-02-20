@@ -51,7 +51,7 @@
             android:resource="@array/preloaded_fonts" />
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-1884263917338927~9693953543" />
+            android:value="ca-app-pub-3739839397874462~1984963841" />
 
         <service android:name=".Notifications.MyFirebaseIdService">
             <intent-filter>

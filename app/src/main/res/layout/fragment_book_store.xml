@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#ECF0F1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
@@ -34,9 +35,9 @@
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/viewpager_reading"
                 android:layout_width="0dp"
-                android:layout_height="350dp"
+                android:layout_height="335dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -70,7 +71,7 @@
                 android:layout_height="45dp"
 
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="285dp"
+                android:layout_marginTop="265dp"
                 android:layout_marginEnd="24dp"
                 android:ems="10"
                 android:maxLines="1"
@@ -118,7 +119,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="92dp"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/montserrat"
                 android:text="New Published"
@@ -127,7 +128,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/view13"
-                app:layout_constraintTop_toBottomOf="@+id/rvYourReading" />
+                app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvYourReading"
@@ -380,10 +381,10 @@
                 android:id="@+id/textView19"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="104dp"
                 android:fontFamily="@font/montserrat"
                 android:text="Loading..."
-                android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/tittleforyou"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/rvYourReading"
                 app:layout_constraintTop_toBottomOf="@+id/textView23" />

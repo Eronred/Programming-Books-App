@@ -7,8 +7,10 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 
+import com.deveu.copus.app.Adapter.BottomNavigationViewBehavior;
 import com.deveu.copus.app.R;
 
 import com.deveu.copus.app.Sign_in.GoogleUserProfile;
@@ -73,8 +75,8 @@ public class bottomNavi extends AppCompatActivity {
 
         mAuth.addAuthStateListener(mAuthListener);
 
-        /* CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) bottomNavi.getLayoutParams();
-       layoutParams.setBehavior(new BottomNavigationViewBehavior());*/
+        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) bottomNavi.getLayoutParams();
+        layoutParams.setBehavior(new BottomNavigationViewBehavior());
 
     }
     private BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener=

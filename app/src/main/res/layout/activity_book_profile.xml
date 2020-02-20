@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <include layout="@layout/toolbarforprofilebook" />
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
@@ -32,46 +34,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/description_book" />
 
             <ImageView
-                android:id="@+id/back_arrow"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
-
-            <ImageView
-                android:id="@+id/like_button"
-                android:layout_width="0dp"
-                android:layout_height="25dp"
-                android:layout_marginEnd="11dp"
-                app:layout_constraintBottom_toBottomOf="@+id/share_book"
-                app:layout_constraintEnd_toStartOf="@+id/share_book"
-                app:layout_constraintTop_toTopOf="@+id/share_book"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/ic_favorite_black_24dp" />
-
-            <ImageView
-                android:id="@+id/share_book"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                app:layout_constraintBottom_toBottomOf="@+id/back_arrow"
-                app:layout_constraintEnd_toEndOf="@+id/view"
-                app:layout_constraintTop_toTopOf="@+id/back_arrow"
-                app:layout_constraintVertical_bias="0.6"
-                app:srcCompat="@drawable/ic_share_black_24dp" />
-
-            <ImageView
                 android:id="@+id/image_book"
                 android:layout_width="150dp"
                 android:layout_height="204dp"
                 android:layout_marginStart="130dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="120dp"
                 android:layout_marginEnd="130dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/back_arrow"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/download_back" />
 
             <TextView
@@ -118,6 +90,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:lineSpacingExtra="4dp"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="sans-serif"
                 android:text="Lorem Ipsum: Quality typographic filler text for webmasters The dummy copy at this site is made from a dictionary of 500 words from Cicero's original source and the text fragments traditionally added. ... Lorem Ipsum is needed for web design, web pages, website templates and CMS.Lorem Ipsum: Quality typographic filler text for webmasters The dummy copy at this site is made from a dictionary of 500 words from Cicero's original source and the text fragments traditionally added. ... Lorem Ipsum is needed for web design, web pages, website templates and CMS."
