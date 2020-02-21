@@ -138,6 +138,7 @@ public class BookStoreFragment extends Fragment {
         adforbooks.loadAd("ca-app-pub-3739839397874462/3181467773",
         new AdRequest.Builder().build());
 
+
         currentuser= FirebaseAuth.getInstance().getCurrentUser();
 
         rvYourReading=getView().findViewById(R.id.rvYourReading);
@@ -1098,9 +1099,12 @@ public class BookStoreFragment extends Fragment {
                             @Override
                             public void onItemClick(View view, int position) {
 
-                                if(adforbooks.isLoaded()){
+                                if (adforbooks == null || !adforbooks.isLoaded()){
+                                    Toast.makeText(getContext(), "Please, control your internet connection!", Toast.LENGTH_SHORT).show();
+                                }else{
                                     adforbooks.show();
                                 }
+
 
                             /*    if(adInter.isLoaded()){
                                     adInter.show();
@@ -1169,7 +1173,8 @@ public class BookStoreFragment extends Fragment {
 
                                     @Override
                                     public void onRewardedVideoAdClosed() {
-                                        adforbooks.loadAd("ca-app-pub-3739839397874462/3181467773",new AdRequest.Builder().build());
+
+                                       adforbooks.loadAd("ca-app-pub-3739839397874462/3181467773",new AdRequest.Builder().build());
                                         Toast.makeText(getContext(), "Respect for our labour :)) ", Toast.LENGTH_SHORT).show();
                                     }
 
@@ -1219,6 +1224,22 @@ public class BookStoreFragment extends Fragment {
         rvYourReading.setAdapter(firebaseRecyclerAdapter2);
         rvYourReading.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL));
     }
+    @Override
+    public void onResume() {
+        adforbooks.resume(getContext());
+        super.onResume();
+    }
 
+    @Override
+    public void onPause() {
+        adforbooks.pause(getContext());
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        adforbooks.destroy(getContext());
+        super.onDestroy();
+    }
 
 }

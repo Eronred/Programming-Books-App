@@ -279,9 +279,12 @@ public class BookProfile extends AppCompatActivity {
 
 
 
-                if(adforbooks.isLoaded()){
+                if (adforbooks == null || !adforbooks.isLoaded()){
+                    Toast.makeText(BookProfile.this, "Please, control your internet connection!", Toast.LENGTH_SHORT).show();
+                }else{
                     adforbooks.show();
                 }
+
 
 
         /*        adInter.setAdListener(new AdListener(){
@@ -705,6 +708,24 @@ public class BookProfile extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        adforbooks.resume(this);
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        adforbooks.pause(this);
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        adforbooks.destroy(this);
+        super.onDestroy();
     }
 
 /*

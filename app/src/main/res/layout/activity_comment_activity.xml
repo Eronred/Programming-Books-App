@@ -24,7 +24,7 @@ tools:context=".ReadingSection.Comment_activity">
         android:layout_marginEnd="32dp"
         android:ems="10"
         android:hint="My review..."
-        android:textColor="#FFFFFF"
+        android:textColor="#070606"
         android:textColorHint="#9B8888"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,9 +59,9 @@ tools:context=".ReadingSection.Comment_activity">
         android:id="@+id/cardView6"
         android:layout_width="0dp"
         android:layout_height="172dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="108dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,13 +78,10 @@ tools:context=".ReadingSection.Comment_activity">
 
     <ImageView
         android:id="@+id/imageView41"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="355dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/cardView6"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
 

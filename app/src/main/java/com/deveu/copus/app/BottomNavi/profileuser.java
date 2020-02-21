@@ -76,6 +76,16 @@ public class profileuser extends Fragment {
                              Bundle savedInstanceState) {
 
 
+        MobileAds.initialize(getContext(),"ca-app-pub-3739839397874462~1984963841");
+
+      /*  adInter = new InterstitialAd(getActivity());
+        adInter.setAdUnitId("ca-app-pub-1884263917338927/4251932907");
+        adInter.loadAd(new AdRequest.Builder().build());*/
+
+
+        adforbooks=MobileAds.getRewardedVideoAdInstance(getContext());
+        adforbooks.loadAd("ca-app-pub-3739839397874462/3181467773",new AdRequest.Builder().build());
+
 
 
         return inflater.inflate(R.layout.profile_layout, container, false);
@@ -85,16 +95,6 @@ public class profileuser extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        MobileAds.initialize(getActivity(),"ca-app-pub-3739839397874462~1984963841");
-
-      /*  adInter = new InterstitialAd(getActivity());
-        adInter.setAdUnitId("ca-app-pub-1884263917338927/4251932907");
-        adInter.loadAd(new AdRequest.Builder().build());*/
-
-
-        adforbooks=MobileAds.getRewardedVideoAdInstance(getContext());
-        adforbooks.loadAd("ca-app-pub-3739839397874462/3181467773",new AdRequest.Builder().build());
 
         currentuser= FirebaseAuth.getInstance().getCurrentUser();
         textView24=getView().findViewById(R.id.textView24);
@@ -215,7 +215,11 @@ public class profileuser extends Fragment {
                             @Override
                             public void onItemClick(View view, int position) {
 
-                                if(adforbooks.isLoaded()){
+
+
+                                if (adforbooks == null || !adforbooks.isLoaded()){
+                                    Toast.makeText(getContext(), "Please, control your internet connection!", Toast.LENGTH_SHORT).show();
+                                }else{
                                     adforbooks.show();
                                 }
 
@@ -225,7 +229,6 @@ public class profileuser extends Fragment {
                                 adforbooks.setRewardedVideoAdListener(new RewardedVideoAdListener() {
                                     @Override
                                     public void onRewardedVideoAdLoaded() {
-
                                     }
 
                                     @Override
@@ -370,7 +373,25 @@ public class profileuser extends Fragment {
 
 
     }
-    
+    @Override
+    public void onResume() {
+        adforbooks.resume(getContext());
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        adforbooks.pause(getContext());
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        adforbooks.destroy(getContext());
+        super.onDestroy();
+    }
+
+
 }
 
 

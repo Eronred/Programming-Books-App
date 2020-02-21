@@ -35,7 +35,7 @@
 
             <ImageView
                 android:id="@+id/image_book"
-                android:layout_width="150dp"
+                android:layout_width="0dp"
                 android:layout_height="204dp"
                 android:layout_marginStart="130dp"
                 android:layout_marginTop="120dp"
@@ -132,6 +132,8 @@
                 android:layout_marginTop="16dp"
                 android:progressTint="#FF9800"
                 android:rating="4"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+
                 app:layout_constraintEnd_toEndOf="@+id/yazar_name"
                 app:layout_constraintStart_toStartOf="@+id/yazar_name"
                 app:layout_constraintTop_toBottomOf="@+id/yazar_name" />
@@ -204,12 +206,12 @@
 
             <TextView
                 android:id="@+id/textView3"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="8dp"
                 android:fontFamily="@font/montserrat"
-                android:text="Down.."
+                android:text="Down."
                 android:textAlignment="center"
                 android:textColor="#888181"
                 android:textSize="15sp"

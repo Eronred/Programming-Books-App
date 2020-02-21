@@ -19,6 +19,7 @@ tools:context=".Sign_in.GoogleUserProfile">
         android:textColor="#FFFFFF"
         android:textColorHint="#000000"
         android:inputType="text"
+        android:padding="5dp"
 
         android:maxLines="1"
         app:layout_constraintEnd_toEndOf="parent"

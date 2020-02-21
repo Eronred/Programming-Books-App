@@ -119,7 +119,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="92dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/montserrat"
                 android:text="New Published"
@@ -128,7 +128,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/view13"
-                app:layout_constraintTop_toBottomOf="@+id/textView19" />
+                app:layout_constraintTop_toBottomOf="@+id/rvYourReading" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvYourReading"
@@ -379,15 +379,18 @@
 
             <TextView
                 android:id="@+id/textView19"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="104dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
                 android:fontFamily="@font/montserrat"
                 android:text="Loading..."
+                android:textAlignment="center"
                 android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/rvYourReading"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/rvYourReading"
-                app:layout_constraintTop_toBottomOf="@+id/textView23" />
+                app:layout_constraintTop_toTopOf="@+id/rvYourReading" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
