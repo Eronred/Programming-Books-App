@@ -17,6 +17,7 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.deveu.copus.app.BottomNavi.bottomNavi;
 import com.deveu.copus.app.MainActivity;
 import com.deveu.copus.app.R;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -33,7 +34,7 @@ public class GoogleUserProfile extends AppCompatActivity {
     private ProgressDialog progressDialog;
     //private static final int SELECT_FILE = 2;
     //  private static final int REQUEST_CAMERA= 3;
-    private EditText userNameEditText;
+    private TextInputEditText userNameEditText;
 
     Button saveProfileBtn;
 
@@ -51,7 +52,7 @@ public class GoogleUserProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_user_profile);
-        userNameEditText = (EditText) findViewById(R.id.userProfileName);
+        userNameEditText = findViewById(R.id.userProfileName);
         saveProfileBtn = (Button)findViewById(R.id.saveProfile);
 
         //assign instances

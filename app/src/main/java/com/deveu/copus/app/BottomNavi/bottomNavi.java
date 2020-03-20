@@ -3,6 +3,7 @@ package com.deveu.copus.app.BottomNavi;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,7 +40,15 @@ public class bottomNavi extends AppCompatActivity {
 
 
         bottomNavi.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new BookStoreFragment()).commit();
+        bottomNavi.setOnNavigationItemReselectedListener(onNavigationItemReselectedListener);
+
+
+
+        if(selectedFragment == null){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new BookStoreFragment()).commit();
+            selectedFragment = new BookStoreFragment();
+        }
+
 
 
         mAuth= FirebaseAuth.getInstance();
@@ -54,7 +63,7 @@ public class bottomNavi extends AppCompatActivity {
 
                 if( user!=null)
                 {
-                    final String userId = user.getUid();
+                   /* final String userId = user.getUid();
                     DatabaseReference userDF = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
                     userDF.addValueEventListener(new ValueEventListener() {
                         @Override
@@ -66,7 +75,7 @@ public class bottomNavi extends AppCompatActivity {
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
                         }
-                    });
+                    });*/
                 }
             }
         };
@@ -79,20 +88,35 @@ public class bottomNavi extends AppCompatActivity {
         layoutParams.setBehavior(new BottomNavigationViewBehavior());
 
     }
+
+    private BottomNavigationView.OnNavigationItemReselectedListener onNavigationItemReselectedListener
+            = new BottomNavigationView.OnNavigationItemReselectedListener() {
+
+        @Override
+        public void onNavigationItemReselected(@NonNull MenuItem item) {
+
+        }
+    };
+
     private BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener=
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                     switch (menuItem.getItemId()){
                         case R.id.nav_home:
-                            selectedFragment=new BookStoreFragment();
+
+                            if(selectedFragment==new BookStoreFragment()){
+
+                            }else{
+                                selectedFragment=new BookStoreFragment();
+
+                            }
                             break;
                         case R.id.nav_pdf:
                             selectedFragment=new ComputerFragment();
                             break;
                         case R.id.nav_bookstore:
                             selectedFragment=new profileuser();
-
                             break;
 
                     }
@@ -114,6 +138,7 @@ public class bottomNavi extends AppCompatActivity {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         mAuth.addAuthStateListener(mAuthListener);
+
     }
 
     @Override

@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +18,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.deveu.copus.app.Adapter.BookSliderAdapter;
 import com.deveu.copus.app.Adapter.ViewHolderMyBooks;
 import com.deveu.copus.app.Datas.Books;
 import com.deveu.copus.app.Datas.MyBooks;
+import com.deveu.copus.app.Datas.slide;
 import com.deveu.copus.app.R;
 import com.deveu.copus.app.ReadingSection.PDFActivity;
 import com.deveu.copus.app.Sign_in.Sign_In;
@@ -41,7 +44,11 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -64,7 +71,11 @@ public class profileuser extends Fragment {
     ImageView imageView3;
     private TextView usernameText;
     private CircleImageView tutorpi_profile;
-
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseAuth mAuth;
+    ViewPager viewPagerProfile;
+    List<slide>slides;
+    BookSliderAdapter bookSliderAdapter;
    // InterstitialAd adInter;
     public profileuser() {
         // Required empty public constructor
@@ -74,18 +85,6 @@ public class profileuser extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
-        MobileAds.initialize(getContext(),"ca-app-pub-3739839397874462~1984963841");
-
-      /*  adInter = new InterstitialAd(getActivity());
-        adInter.setAdUnitId("ca-app-pub-1884263917338927/4251932907");
-        adInter.loadAd(new AdRequest.Builder().build());*/
-
-
-        adforbooks=MobileAds.getRewardedVideoAdInstance(getContext());
-        adforbooks.loadAd("ca-app-pub-3739839397874462/3181467773",new AdRequest.Builder().build());
-
 
 
         return inflater.inflate(R.layout.profile_layout, container, false);
@@ -100,6 +99,7 @@ public class profileuser extends Fragment {
         textView24=getView().findViewById(R.id.textView24);
         textView20=getView().findViewById(R.id.textView20);
 
+        viewPagerProfile=getView().findViewById(R.id.viewPagerProfile);
         imageView3=getView().findViewById(R.id.imageView3);
         usernameText=getView().findViewById(R.id.username);
         tutorpi_profile=getView().findViewById(R.id.tutorpi_profile);
@@ -107,7 +107,27 @@ public class profileuser extends Fragment {
 
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
 
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
+                //check users
+
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+
+                if( user!=null)
+                {
+
+                }
+                else{
+
+                }
+            }
+        };
+
+
+        mAuth.addAuthStateListener(mAuthListener);
         imageView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,16 +138,15 @@ public class profileuser extends Fragment {
         });
 
 
-
-
-
-
-
-
-
-
+        Timer timer= new Timer();
+        timer.scheduleAtFixedRate(new sliderTime2(),2000,3000);
+        sliderPaperAdapter();
         userDownloads();
         userInfo();
+        MobileAds.initialize(getContext(),"ca-app-pub-4177258851116225~1431984404");
+
+        adforbooks=MobileAds.getRewardedVideoAdInstance(getContext());
+        adforbooks.loadAd("ca-app-pub-4177258851116225/8604252637",new AdRequest.Builder().build());
 
     }
 
@@ -244,7 +263,7 @@ public class profileuser extends Fragment {
 
                                     @Override
                                     public void onRewardedVideoAdClosed() {
-                                        adforbooks.loadAd("ca-app-pub-3739839397874462/3181467773",new AdRequest.Builder().build());
+                                        adforbooks.loadAd("ca-app-pub-4177258851116225/8604252637",new AdRequest.Builder().build());
                                         Toast.makeText(getContext(), "Respect for our labour :)) ", Toast.LENGTH_SHORT).show();
                                     }
 
@@ -375,22 +394,97 @@ public class profileuser extends Fragment {
     }
     @Override
     public void onResume() {
-        adforbooks.resume(getContext());
+        adforbooks.resume(getActivity());
         super.onResume();
     }
 
     @Override
     public void onPause() {
-        adforbooks.pause(getContext());
+        adforbooks.pause(getActivity());
         super.onPause();
     }
 
     @Override
     public void onDestroy() {
-        adforbooks.destroy(getContext());
+        adforbooks.destroy(getActivity());
         super.onDestroy();
     }
 
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        mAuth.removeAuthStateListener(mAuthListener);
+    }
+
+
+    private void sliderPaperAdapter() {
+
+
+        slides=new ArrayList<>();
+
+        DatabaseReference homesliders = FirebaseDatabase.getInstance()
+                .getReference("ProfileSlider").child("profile");
+
+        homesliders.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    for(DataSnapshot snapshot: dataSnapshot.getChildren()){
+                        String title = snapshot.child("title").getValue().toString();
+                        String image = snapshot.child("image").getValue().toString();
+                        slides.add(new slide(image,title));
+                        BookSliderAdapter adapter=new BookSliderAdapter(getContext(),slides);
+                        viewPagerProfile.setAdapter(adapter);
+
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        // int id = getResources().getIdentifier(name, "drawable", getContext().getPackageName());
+        //Drawable drawable = getResources().getDrawable(id);
+
+       /* firstSlides.add(new slide(R.drawable.unity_slidera,"Be gamer Developer"));
+        firstSlides.add(new slide(R.drawable.unity_sliderb,"Be gamer Developer"));
+        firstSlides.add(new slide(R.drawable.asfcsa,"Be gamer Developer"));
+        firstSlides.add(new slide(R.drawable.html_slider,"Do you want to be Web Developer?"));
+        firstSlides.add(new slide(R.drawable.python_sliderb,""));*/
+
+
+    }
+    class sliderTime2 extends TimerTask { //to change pics!
+
+        @Override
+        public void run() {
+            if(getActivity() == null)
+                return;
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (viewPagerProfile.getCurrentItem()<slides.size()-1){
+                        viewPagerProfile.setCurrentItem(viewPagerProfile.getCurrentItem()+1);
+                    }else{
+                        viewPagerProfile.setCurrentItem(0);
+                    }
+
+
+                }
+            });
+        }
+    }
 
 }
 

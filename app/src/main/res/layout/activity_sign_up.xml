@@ -3,9 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/sign_back"
+    android:background="@drawable/back_sign"
     android:layout_height="match_parent"
     tools:context=".Sign_in.Sign_In">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayoutSign"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayoutSign" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayoutSign"
@@ -23,9 +34,13 @@
             android:layout_height="51dp"
 
             android:layout_marginTop="38dp"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/googlesignbutton"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/googlesignbutton"
             app:layout_constraintTop_toBottomOf="@+id/googlesignbutton"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/ic_github_forbook" />
 
         <ImageView
@@ -33,7 +48,7 @@
             android:layout_width="0dp"
             android:layout_height="51dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="172dp"
+            android:layout_marginTop="208dp"
             android:layout_marginEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -45,14 +60,9 @@
             android:id="@+id/imageView6"
             android:layout_width="0dp"
             android:layout_height="93dp"
-            android:layout_marginTop="181dp"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/googlesignbutton"
+            android:layout_marginTop="68dp"
             app:layout_constraintEnd_toEndOf="@+id/googlesignbutton"
-            app:layout_constraintHorizontal_bias="0.45"
-            app:layout_constraintStart_toStartOf="@+id/googlesignbutton"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.505"
             app:srcCompat="@drawable/ic_app_logo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

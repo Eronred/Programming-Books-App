@@ -19,26 +19,46 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/textView29"
+            <View
+                android:id="@+id/view5"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/montserrat"
-                android:text="John Green, The Fault in Our Stars"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="@+id/textView26"
-                app:layout_constraintTop_toBottomOf="@+id/textView26" />
+                android:layout_height="1dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/view_profile"
+                app:layout_constraintBottom_toBottomOf="@+id/textView24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView24"
+                app:layout_constraintTop_toTopOf="@+id/textView24" />
 
-            <ImageView
-                android:id="@+id/imageView"
+            <View
+                android:id="@+id/view6"
                 android:layout_width="0dp"
-                android:layout_height="218dp"
-                android:scaleType="centerCrop"
+                android:layout_height="1dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/view_profile"
+                app:layout_constraintBottom_toBottomOf="@+id/textView16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView16"
+                app:layout_constraintTop_toTopOf="@+id/textView16" />
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPagerProfile"
+                android:layout_width="0dp"
+                android:layout_height="350dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="120dp"
+                app:layout_constraintBottom_toTopOf="@+id/tutorpi_profile"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/back_profile" />
+                app:srcCompat="@drawable/ic_exit_to_app_black_24dp" />
 
             <TextView
                 android:id="@+id/textView16"
@@ -50,7 +70,6 @@
                 android:text="Your notes during reading "
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rv_user" />
 
@@ -58,9 +77,9 @@
                 android:id="@+id/tutorpi_profile"
                 android:layout_width="78dp"
                 android:layout_height="78dp"
-                android:layout_marginTop="180dp"
+                android:layout_marginTop="210dp"
                 android:src="@android:drawable/btn_minus"
-                app:civ_border_color="#E91E63"
+                app:civ_border_color="#000000"
                 app:civ_border_width="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
@@ -94,14 +113,14 @@
                 android:id="@+id/textView15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="88dp"
                 android:fontFamily="@font/montserrat"
                 android:text="Your library "
-                android:textSize="19sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView29" />
+                app:layout_constraintTop_toBottomOf="@+id/viewPagerProfile" />
 
             <TextView
                 android:id="@+id/textView24"
@@ -139,7 +158,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="24dp"
                 android:fontFamily="@font/montserrat"
                 android:text="Loading..."
                 android:textAlignment="center"
@@ -149,30 +170,6 @@
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="@+id/rv_user"
                 app:layout_constraintTop_toTopOf="@+id/rv_user" />
-
-            <TextView
-                android:id="@+id/textView26"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/montserrat"
-                android:text="“Sometimes, you read a book and it fills you with this weird evangelical zeal, and you become convinced that the shattered world will never be put back together unless and until all living humans read the book.”"
-                android:textSize="15dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/textView15"
-                app:layout_constraintTop_toBottomOf="@+id/username" />
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="120dp"
-                app:layout_constraintBottom_toTopOf="@+id/tutorpi_profile"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_exit_to_app_black_24dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

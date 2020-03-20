@@ -6,6 +6,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -47,14 +48,15 @@ import java.util.TimerTask;
 public class Sign_In extends AppCompatActivity {
 
     private ImageView githubbutton,googlebutton;
-    private FirebaseAuth.AuthStateListener mAuthListener;
+    FirebaseAuth.AuthStateListener mAuthListener;
     private static final int RC_SIGN_IN = 100;
 
     GoogleSignInClient mGoogleSignInClient;
-    private FirebaseAuth mAuth;
+    FirebaseAuth mAuth;
     private List<slide> firstSlides,upsilider;
     private ViewPager v_sign;
     private ConstraintLayout constraintLayoutSign;
+    ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +68,12 @@ public class Sign_In extends AppCompatActivity {
         constraintLayoutSign = findViewById(R.id.constraintLayoutSign);
 
         //v_sign = findViewById(R.id.rv_sign);
+
+
+        progressBar=findViewById(R.id.progressBar);
+        constraintLayoutSign=findViewById(R.id.constraintLayoutSign);
+
+        progressBar.setVisibility(View.GONE);
 
 
         /*Timer timer= new Timer();
@@ -86,8 +94,8 @@ public class Sign_In extends AppCompatActivity {
                 //check users
 
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-
-                if( user!=null)
+/*
+                if(user!=null)
                 {
                     final String userId = user.getUid();
                     DatabaseReference userDF = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
@@ -95,7 +103,7 @@ public class Sign_In extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if(dataSnapshot.exists()){
-                                Intent moveToHome = new Intent(Sign_In.this, bottomNavi.class);
+                                Intent moveToHome = new Intent(getApplicationContext(), bottomNavi.class);
                                 moveToHome.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(moveToHome);
                             }
@@ -104,7 +112,24 @@ public class Sign_In extends AppCompatActivity {
                         public void onCancelled(@NonNull DatabaseError databaseError) {
                         }
                     });
-                }
+                }*/
+            if(user!= null){
+
+
+
+
+
+
+
+                /*progressBar.setVisibility(View.VISIBLE);
+                constraintLayoutSign.setVisibility(View.GONE);*/
+                Intent moveToHome = new Intent(Sign_In.this, bottomNavi.class);
+                moveToHome.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(moveToHome);
+                finish();
+            }
+
+
             }
         };
 
@@ -178,7 +203,7 @@ public class Sign_In extends AppCompatActivity {
                                         gitintent.putExtra("mail",emailgithub);
 
                                         startActivity(gitintent);
-                                        finish();
+                                        Sign_In.this.finish(); //update
                                     }
                                 })
                         .addOnFailureListener(
@@ -207,69 +232,6 @@ public class Sign_In extends AppCompatActivity {
 
 
 
-
-
-
-    /*private void sliderPaperAdapter() {
-
-
-
-
-        firstSlides=new ArrayList<>();
-
-
-
-        DatabaseReference homesliders = FirebaseDatabase.getInstance()
-                .getReference("BookSliderSign").child("sign");
-
-        homesliders.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    for(DataSnapshot snapshot: dataSnapshot.getChildren()){
-                        String title = Objects.requireNonNull(snapshot.child("title").getValue()).toString();
-                        String image = Objects.requireNonNull(snapshot.child("image").getValue()).toString();
-                        firstSlides.add(new slide(image,title));
-                        SignSliderAdapter adapter=new SignSliderAdapter(Sign_In.this,firstSlides);
-                        v_sign.setAdapter(adapter);
-
-
-                        progressBarSign.setVisibility(View.GONE);
-
-
-
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-
-    }*/
-
-   /* class sliderTime2 extends TimerTask { //to change pics!
-
-        @Override
-        public void run() {
-
-            Sign_In.this.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    if (v_sign.getCurrentItem()<firstSlides.size()-1){
-                        v_sign.setCurrentItem(v_sign.getCurrentItem()+1);
-                    }else{
-                        v_sign.setCurrentItem(0);
-                    }
-
-
-                }
-            });
-        }
-    }*/
 
 
     @Override
@@ -310,7 +272,7 @@ public class Sign_In extends AppCompatActivity {
                             String photo = user.getPhotoUrl().toString();
                             String uid = user.getUid();
 
-                            Intent intent = new Intent(Sign_In.this, GoogleUserProfile.class);
+                            Intent intent = new Intent(getApplicationContext(), GoogleUserProfile.class);
                             intent.putExtra("uid", uid);
                             intent.putExtra("photo",photo);
                             intent.putExtra("mail",gmail);
@@ -318,7 +280,7 @@ public class Sign_In extends AppCompatActivity {
 
                             //Toast.makeText(getActivity(), ""+user.getEmail(), Toast.LENGTH_SHORT).show();
                             startActivity(intent);
-                            finish();
+                            Sign_In.this.finish();
                             //updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -340,15 +302,16 @@ public class Sign_In extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-
         mAuth.addAuthStateListener(mAuthListener);
     }
     @Override
     public void onStop() {
         super.onStop();
-
-        mAuth.removeAuthStateListener(mAuthListener);
+        if(mAuth!=null){
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
     }
+
 
 
 }

@@ -1,31 +1,47 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical"
-android:background="#151c25"
-tools:context=".Sign_in.GoogleUserProfile">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Sign_in.GoogleUserProfile">
 
 
-    <EditText
-        android:id="@+id/userProfileName"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         android:layout_width="0dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="49dp"
-        android:background="@drawable/shapeofedittext"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#000000"
-        android:inputType="text"
-        android:padding="5dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="16dp"
 
-        android:maxLines="1"
+        android:layout_marginEnd="35dp"
+        android:textColorHint="#0E0101"
+        app:boxBackgroundColor="#fff"
+        app:boxBackgroundMode="filled"
+        app:errorTextColor="#000"
+        app:hintTextColor="#000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView30" />
+        app:layout_constraintTop_toBottomOf="@+id/textView30">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/userProfileName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/montserrat"
+            android:hint="Username"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="#050000"
+            android:textColorHint="#030000"
+            android:textSize="18sp"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
 
@@ -41,23 +57,25 @@ tools:context=".Sign_in.GoogleUserProfile">
         android:textColor="#fff"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userProfileName">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
     </Button>
 
     <TextView
         android:id="@+id/textView30"
-        android:layout_width="151dp"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="95dp"
 
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="204dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="152dp"
+        android:layout_marginEnd="177dp"
         android:fontFamily="@font/gudea"
-        android:text="Username"
-        android:textColor="#ffff"
-        android:textSize="20sp"
+        android:text="Almost you are there!"
+        android:textColor="#130101"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 

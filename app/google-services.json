@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "944223972121",
+    "firebase_url": "https://coder-books.firebaseio.com",
+    "project_id": "coder-books",
+    "storage_bucket": "coder-books.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:944223972121:android:ee1d6876fea3f44c1df388",
+        "android_client_info": {
+          "package_name": "com.deveu.copus.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "944223972121-96jrufie3c7392n3aujp168rmvqvhdmf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.deveu.copus.app",
+            "certificate_hash": "52d5ce96f9166504bccc275c10f4f6369854d2c9"
+          }
+        },
+        {
+          "client_id": "944223972121-ho5i2ujl5r9l4qnfdv9os2dstpmr1n9s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.deveu.copus.app",
+            "certificate_hash": "20650997ea109933971388244901247a7e30f73a"
+          }
+        },
+        {
+          "client_id": "944223972121-s7p54akito8gigumqccss4r2dkfiatdr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAudFmo2V0p3Eb2t20Voqb4J_kYUEHmoOw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "944223972121-s7p54akito8gigumqccss4r2dkfiatdr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

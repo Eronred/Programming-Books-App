@@ -23,6 +23,7 @@ import static android.os.Environment.DIRECTORY_DOWNLOADS;
 
 import com.deveu.copus.app.Adapter.ReviewAdapter;
 import com.deveu.copus.app.Adapter.ViewHolderBooks;
+import com.deveu.copus.app.BottomNavi.bottomNavi;
 import com.deveu.copus.app.BuildConfig;
 import com.deveu.copus.app.Datas.Books;
 import com.deveu.copus.app.Datas.Reviews;
@@ -97,14 +98,14 @@ public class BookProfile extends AppCompatActivity {
 
 
 
-        MobileAds.initialize(BookProfile.this,"ca-app-pub-3739839397874462~1984963841");
+        MobileAds.initialize(BookProfile.this,"ca-app-pub-4177258851116225~1431984404");
        /* adInter = new InterstitialAd(this);
         adInter.setAdUnitId("ca-app-pub-1884263917338927/4251932907");
         adInter.loadAd(new AdRequest.Builder().build());*/
        /* MobileAds.initialize(this,"ca-com.deveu.copus.app-pub-1884263917338927~9693953543");
 */
         adforbooks=MobileAds.getRewardedVideoAdInstance(this);
-        adforbooks.loadAd("ca-app-pub-3739839397874462/3181467773",new AdRequest.Builder().build());
+        adforbooks.loadAd("ca-app-pub-4177258851116225/8604252637",new AdRequest.Builder().build());
 
         findViewById(R.id.share_book).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,7 +127,9 @@ public class BookProfile extends AppCompatActivity {
         findViewById(R.id.back_arrow).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+               Intent intent = new Intent(BookProfile.this, bottomNavi.class);
+               startActivity(intent);
+
             }
         });
         //required id's
@@ -429,7 +432,7 @@ public class BookProfile extends AppCompatActivity {
 
                     @Override
                     public void onRewardedVideoAdClosed() {
-                        adforbooks.loadAd("ca-app-pub-3739839397874462/3181467773",new AdRequest.Builder().build());
+                        adforbooks.loadAd("ca-app-pub-4177258851116225/8604252637",new AdRequest.Builder().build());
                         Toast.makeText(BookProfile.this, "Respect for our labour :)) ", Toast.LENGTH_SHORT).show();
 
 

@@ -30,6 +30,7 @@ import com.deveu.copus.app.R;
 import com.deveu.copus.app.ReadingSection.BookProfile;
 import com.deveu.copus.app.ReadingSection.PDFActivity;
 import com.deveu.copus.app.ReadingSection.SearchActivity;
+import com.deveu.copus.app.Sign_in.Sign_In;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -68,7 +69,8 @@ public class BookStoreFragment extends Fragment {
 
 
     //InterstitialAd adInter;
-
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseAuth mAuth;
     ConstraintLayout consforhome;
     ProgressBar progressBarHome;
 
@@ -124,10 +126,32 @@ public class BookStoreFragment extends Fragment {
         imageView2=getView().findViewById(R.id.imageView2);
 
 
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
+                //check users
+
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+
+                if( user!=null)
+                {
+
+                }
+                else{
+
+                }
+            }
+        };
+
+
+        mAuth.addAuthStateListener(mAuthListener);
+
        /* Timer timer1=new Timer();
         timer1.scheduleAtFixedRate(new BookStoreFragment(). sliderTime2(),2000,3000);*/
 
-        MobileAds.initialize(getContext(),"ca-app-pub-3739839397874462~1984963841");
+        MobileAds.initialize(getContext(),"ca-app-pub-4177258851116225~1431984404");
        /* adInter = new InterstitialAd(getContext());
         adInter.setAdUnitId("ca-app-pub-1884263917338927/4251932907");
         adInter.loadAd(new AdRequest.Builder().build());*/
@@ -135,7 +159,7 @@ public class BookStoreFragment extends Fragment {
 
 
         adforbooks=MobileAds.getRewardedVideoAdInstance(getContext());
-        adforbooks.loadAd("ca-app-pub-3739839397874462/3181467773",
+        adforbooks.loadAd("ca-app-pub-4177258851116225/8604252637",
         new AdRequest.Builder().build());
 
 
@@ -1167,15 +1191,18 @@ public class BookStoreFragment extends Fragment {
 
                                     @Override
                                     public void onRewardedVideoStarted() {
-                                        Toast.makeText(getContext(), "When the video is over, the book will be opened.", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getContext(), "When the video is over, the book will be opened.",
+                                                Toast.LENGTH_SHORT).show();
 
                                     }
 
                                     @Override
                                     public void onRewardedVideoAdClosed() {
 
-                                       adforbooks.loadAd("ca-app-pub-3739839397874462/3181467773",new AdRequest.Builder().build());
-                                        Toast.makeText(getContext(), "Respect for our labour :)) ", Toast.LENGTH_SHORT).show();
+                                       adforbooks.loadAd("ca-app-pub-4177258851116225/8604252637",
+                                               new AdRequest.Builder().build());
+                                        Toast.makeText(getContext(), "Respect for our labour :)) ",
+                                                Toast.LENGTH_SHORT).show();
                                     }
 
                                     @Override
@@ -1240,6 +1267,19 @@ public class BookStoreFragment extends Fragment {
     public void onDestroy() {
         adforbooks.destroy(getContext());
         super.onDestroy();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        mAuth.removeAuthStateListener(mAuthListener);
     }
 
 }
