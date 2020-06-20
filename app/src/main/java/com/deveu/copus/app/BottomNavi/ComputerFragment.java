@@ -54,20 +54,17 @@ Button send;
 
 
 
-        send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(TextUtils.isEmpty(subject_edit.getText().toString())){
-                    Toast.makeText(getActivity(), "Please fill required areas!", Toast.LENGTH_SHORT).show();
-                }else if (TextUtils.isEmpty(message_edit.getText().toString())){
-                    Toast.makeText(getActivity(), "Please fill required areas!", Toast.LENGTH_SHORT).show();
+        send.setOnClickListener(v -> {
+            if(TextUtils.isEmpty(subject_edit.getText().toString())){
+                Toast.makeText(getActivity(), "Please fill required areas!", Toast.LENGTH_SHORT).show();
+            }else if (TextUtils.isEmpty(message_edit.getText().toString())){
+                Toast.makeText(getActivity(), "Please fill required areas!", Toast.LENGTH_SHORT).show();
 
-                }else{
-                    sendMail();
-                }
-
-
+            }else{
+                sendMail();
             }
+
+
         });
 
     }

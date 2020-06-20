@@ -2,10 +2,8 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         release {
-            storePassword '19051905'
-            keyAlias = 'keycps45'
-            keyPassword '19051905'
-            storeFile file('C:\\Users\\erenc\\OneDrive\\Masaüstü\\deveucopus.jks')
+            
+
         }
     }
     compileSdkVersion 29
